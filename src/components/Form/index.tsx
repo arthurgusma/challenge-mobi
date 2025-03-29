@@ -1,24 +1,16 @@
-import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useGetBrandsQuery, useGetModelsByBrandQuery, useGetYearsByModelQuery } from "@/services/apiFipe";
+import { setBrand, setModel, setYear } from "@/lib/redux/reducers";
+import { RootState } from "@/lib/redux/store";
 
 import { Container, InputLabel, MenuItem } from "@mui/material";
 import { ButtonWrapper, StyledButton, StyledFormControl, StyledSelect } from "./styles";
-
-interface VehicleSearchState {
-    brand: string,
-    model: string,
-    year: string,
-}
+import { useDispatch, useSelector } from "react-redux";
 
 export default function Form() {
-    const [selectedVehicle, setSelectedVehicle] = useState<VehicleSearchState>({
-        brand: '',
-        model: '',
-        year: ''
-    })
-
-    const navigate = useNavigate()
+    const vehicleSearch = useSelector((state: RootState) => state.vehicleSearch);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const { 
       data: brands = [], 
@@ -28,45 +20,28 @@ export default function Form() {
     const { 
       data: models = [], 
       isLoading: isModelsLoading 
-    } = useGetModelsByBrandQuery(selectedVehicle.brand!, {
-      skip: !selectedVehicle.brand
+    } = useGetModelsByBrandQuery(vehicleSearch.brand, {
+      skip: !vehicleSearch.brand
     })
   
     const { 
       data: years = [], 
       isLoading: isYearsLoading 
     } = useGetYearsByModelQuery(
-      { brandCode: selectedVehicle.brand!, modelCode: selectedVehicle.model! }, 
-      { skip: !selectedVehicle.brand || !selectedVehicle.model }
+      { brandCode: vehicleSearch.brand, modelCode: vehicleSearch.model }, 
+      { skip: !vehicleSearch.brand || !vehicleSearch.model }
     )
 
     function handleSelectBrand(value: string) {
-        setSelectedVehicle({
-            brand: value,
-            model: '',
-            year: ''
-        });
+        dispatch(setBrand(value));
     }
     
     function handleSelectModel(value: string) {
-        setSelectedVehicle({
-            ...selectedVehicle,
-            model: value,
-            year: ''
-        });
+        dispatch(setModel(value));
     }
     
     function handleSelectYear(value: string) {
-        setSelectedVehicle({
-            ...selectedVehicle,
-            year: value
-        });
-    }
-
-    function handleGetPrice() {
-        navigate(
-            `/resultado?brand=${selectedVehicle.brand}&model=${selectedVehicle.model}&year=${selectedVehicle.year}`
-        )
+        dispatch(setYear(value));
     }
 
     return (
@@ -79,9 +54,9 @@ export default function Form() {
             }}
         >
             <StyledFormControl fullWidth margin="normal" variant="filled">
-                <InputLabel shrink={!!selectedVehicle.brand}>Marca</InputLabel>
+                <InputLabel shrink={!!vehicleSearch.brand}>Marca</InputLabel>
                 <StyledSelect
-                    value={selectedVehicle.brand}
+                    value={vehicleSearch.brand}
                     onChange={(e) => handleSelectBrand(e.target.value as string)}
                     disabled={isBrandsLoading}
                     variant="filled"
@@ -103,11 +78,11 @@ export default function Form() {
                 fullWidth 
                 variant="filled" 
                 margin="normal" 
-                disabled={!selectedVehicle.brand || isModelsLoading}
+                disabled={!vehicleSearch.brand || isModelsLoading}
             >
-                <InputLabel shrink={!!selectedVehicle.model}>Modelo</InputLabel>
+                <InputLabel shrink={!!vehicleSearch.model}>Modelo</InputLabel>
                 <StyledSelect
-                    value={selectedVehicle.model}
+                    value={vehicleSearch.model}
                     onChange={(e) => handleSelectModel(e.target.value as string)}
                     variant="filled"
                     displayEmpty
@@ -124,16 +99,16 @@ export default function Form() {
                 </StyledSelect>
             </StyledFormControl>
 
-            {selectedVehicle.model && (
+            {vehicleSearch.model && (
                 <StyledFormControl
                     fullWidth 
                     variant="filled" 
                     margin="normal" 
-                    disabled={!selectedVehicle.brand || isModelsLoading}
+                    disabled={!vehicleSearch.brand || isModelsLoading}
                 >
-                    <InputLabel shrink={!!selectedVehicle.year}>Ano</InputLabel>
+                    <InputLabel shrink={!!vehicleSearch.year}>Ano</InputLabel>
                     <StyledSelect
-                        value={selectedVehicle.year}
+                        value={vehicleSearch.year}
                         onChange={(e) => handleSelectYear(e.target.value as string)}
                         variant="filled"
                         displayEmpty
@@ -153,8 +128,8 @@ export default function Form() {
             <ButtonWrapper>
                 <StyledButton
                     variant="contained"
-                    disabled={!selectedVehicle.year}
-                    onClick={handleGetPrice}
+                    disabled={!vehicleSearch.year}
+                    onClick={() => navigate('/resultado')}
                     sx={{ mt: 2 }}
                 >
                     Consultar preço

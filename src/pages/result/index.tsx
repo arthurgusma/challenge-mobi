@@ -1,14 +1,11 @@
-import { useSearchParams } from "react-router";
 import { useGetVehiclePriceQuery } from "@/services/apiFipe";
 import { Container, Description, PriceDisplay, Title } from "./styles";
 import NavigateHome from "@/components/NavigateHome";
+import { useSelector } from "react-redux";
+import { RootState } from "@/lib/redux/store";
 
 export default function ResultsPage() {
-  const [ searchParams ] = useSearchParams()
-  
-  const brand = searchParams.get('brand') || ''
-  const model = searchParams.get('model') || ''
-  const year = searchParams.get('year') || ''
+  const { brand, model, year } = useSelector((state: RootState) => state.vehicleSearch);
 
   const { data, error, isLoading } = useGetVehiclePriceQuery({
     brandCode: brand, 
