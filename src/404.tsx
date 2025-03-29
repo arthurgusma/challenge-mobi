@@ -1,15 +1,14 @@
-import { Link } from "react-router";
+import { Container } from "./404styles";
+import NavigateHome from "./components/NavigateHome";
 
 export function NotFound() {
     return (
-        <div className="flex h-screen flex-col items-center justify-center gap-2">
-            <h1 className="text-4xl font-bold">Página não encontrada</h1>
-            <p className="text-accent-foreground">
+        <Container>
+            <h1>Página não encontrada</h1>
+            <p>
                 Voltar para a{` `}
-                <Link to='/' className="text-sky-600 dark:text-sky-400" >
-                 Busca Tabela Fipe
-                </Link>
+                <NavigateHome />
             </p>
-        </div>
+        </Container>
     )
 }
