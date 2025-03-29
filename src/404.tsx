@@ -7,7 +7,7 @@ export function NotFound() {
             <p className="text-accent-foreground">
                 Voltar para a{` `}
                 <Link to='/' className="text-sky-600 dark:text-sky-400" >
-                 Pesquisa Tabela Fipe
+                 Busca Tabela Fipe
                 </Link>
             </p>
         </div>

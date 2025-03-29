@@ -18,7 +18,7 @@ export default function ResultsPage() {
   })
 
   if (isLoading) return <Container>Loading...</Container>
-  if (error) return <Container>Erro consultano preço, voltar para a <Link to={"/pesquisa"}>Pesquisa Tabela Fipe</Link></Container>
+  if (error) return <Container>Erro consultano preço, voltar para a <Link to={"/busca"}>Busca Tabela Fipe</Link></Container>
 
   return (
     <Container>

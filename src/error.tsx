@@ -13,7 +13,7 @@ export default function Error() {
       <p>
         Voltar para a{' '}
         <DashboardLink to="/" className="text-sky-600 dark:text-sky-400">
-          Pesquisa Tabel Fipe
+          Busca Tabel Fipe
         </DashboardLink>
       </p>
     </ErrorContainer>
