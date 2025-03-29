@@ -1,5 +1,5 @@
 import { createBrowserRouter, Navigate } from "react-router";
-import HomePage from "./pages/Home";
+import SearchPage from "./pages/Search";
 import { NotFound } from "./404";
 import ResultPage from "./pages/Result";
 import Error from "./error";
@@ -12,7 +12,7 @@ export const router = createBrowserRouter([
             element: <Navigate to="/pesquisa" replace />,
         },
         {
-            path: '/pesquisa', element: <HomePage />
+            path: '/pesquisa', element: <SearchPage />
         }
     ],
      },
