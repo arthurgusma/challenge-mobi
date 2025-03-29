@@ -23,6 +23,7 @@ export const PriceDisplay = styled.h2`
   color: #fff;
   width: fit-content;
   padding: 15px;
+  margin-block: 20px;
   border-radius: 30px;
   font-weight: bold;
   display: flex;

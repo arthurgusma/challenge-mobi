@@ -1,4 +1,4 @@
-import { useSearchParams } from "react-router";
+import { Link, useSearchParams } from "react-router";
 import { useGetVehiclePriceQuery } from "@/services/apiFipe";
 import { Container, Description, PriceDisplay, Title } from "./styles";
 
@@ -17,8 +17,8 @@ export default function ResultsPage() {
     skip: !brand || !model || !year
   })
 
-  if (isLoading) return <div>Loading...</div>
-  if (error) return <div>Error fetching vehicle price</div>
+  if (isLoading) return <Container>Loading...</Container>
+  if (error) return <Container>Erro consultano preço, voltar para a <Link to={"/pesquisa"}>Pesquisa Tabela Fipe</Link></Container>
 
   return (
     <Container>
