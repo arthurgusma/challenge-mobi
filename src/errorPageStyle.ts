@@ -1,4 +1,3 @@
-import { Link } from "react-router";
 import styled from "styled-components";
 
 export const ErrorContainer = styled.div`
@@ -10,14 +9,4 @@ export const ErrorContainer = styled.div`
   gap: 0.5rem;
   text-align: center;
   padding: 1rem;
-`;
-
-export const DashboardLink = styled(Link)`
-  color: #0284c7;
-  text-decoration: none;
-  font-weight: 600;
-
-  &:hover {
-    text-decoration: underline;
-  }
 `;

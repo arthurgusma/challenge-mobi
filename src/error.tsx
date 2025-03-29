@@ -1,5 +1,6 @@
 import { useRouteError } from 'react-router'
-import { DashboardLink, ErrorContainer } from './errorPageStyle'
+import { ErrorContainer } from './errorPageStyle'
+import NavigateHome from './components/NavigateHome'
 
 export default function Error() {
   const error = useRouteError() as Error
@@ -12,9 +13,7 @@ export default function Error() {
       <pre>{error?.message || JSON.stringify(error)}</pre>
       <p>
         Voltar para a{' '}
-        <DashboardLink to="/" className="text-sky-600 dark:text-sky-400">
-          Busca Tabel Fipe
-        </DashboardLink>
+        <NavigateHome />
       </p>
     </ErrorContainer>
   )
