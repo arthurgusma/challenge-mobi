@@ -15,8 +15,9 @@ export default function ResultsPage() {
     skip: !brand || !model || !year
   })
 
-  if (isLoading) return <Container>Loading...</Container>
-  if (error) return <Container>Erro consultano preço, voltar para a <NavigateHome /></Container>
+  if (isLoading) return <Container><h3>Carregando...</h3></Container>
+  if (error) return <Container><h3>Erro ao consultar preço, volte para a</h3><NavigateHome /></Container>
+  if (!brand || !model || !year) return <Container><h3>Nenhum veículo infromado, volte para a</h3><NavigateHome /></Container>
 
   return (
     <Container>
