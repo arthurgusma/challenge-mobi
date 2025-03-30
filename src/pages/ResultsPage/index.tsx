@@ -21,8 +21,8 @@ export default function ResultsPage() {
 
   return (
     <Container>
-        <Title>Tabela Fipe: Preço {data?.Marca} {data?.Modelo} {data?.AnoModelo}</Title>
-        <PriceDisplay>
+        <Title data-testid="header-title">Tabela Fipe: Preço {data?.Marca} {data?.Modelo} {data?.AnoModelo}</Title>
+        <PriceDisplay data-testid="display-price">
           {data?.Valor}
         </PriceDisplay>
         <Description>Este é o preço da compra do veículo</Description>

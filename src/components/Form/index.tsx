@@ -61,6 +61,7 @@ export default function Form() {
                     disabled={isBrandsLoading}
                     variant="filled"
                     displayEmpty
+                    data-testid="brand-select"
                 >
                     {isBrandsLoading ? (
                         <MenuItem disabled>Carregando marcas...</MenuItem>
@@ -86,6 +87,7 @@ export default function Form() {
                     onChange={(e) => handleSelectModel(e.target.value as string)}
                     variant="filled"
                     displayEmpty
+                    data-testid="model-select"
                 >
                     {isModelsLoading ? (
                         <MenuItem disabled>Carregando modelos...</MenuItem>
@@ -105,6 +107,7 @@ export default function Form() {
                     variant="filled" 
                     margin="normal" 
                     disabled={!vehicleSearch.brand || isModelsLoading}
+                    data-testid="year-select"
                 >
                     <InputLabel shrink={!!vehicleSearch.year}>Ano</InputLabel>
                     <StyledSelect
@@ -131,6 +134,7 @@ export default function Form() {
                     disabled={!vehicleSearch.year}
                     onClick={() => navigate('/resultado')}
                     sx={{ mt: 2, textTransform: 'none' }}
+                    data-testid="search-button"
                 >
                     Consultar preço
                 </StyledButton>
