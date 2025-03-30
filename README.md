@@ -42,7 +42,7 @@ Este projeto utiliza a API gratuita da Tabela FIPE:
 
 1. Clone o repositório
    ```bash
-   git clone https://github.com/seuusuario/consulta-precos-veiculos.git
+   git clone https://github.com/arthurgusma/challenge-mobi.git
    cd consulta-precos-veiculos
    ```
 
