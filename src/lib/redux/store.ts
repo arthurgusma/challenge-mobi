@@ -2,7 +2,7 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { fipeApi } from '@/services/apiFipe';
 import vehicleSearchReducer from './reducers';
 import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
+import sessionStorage from 'redux-persist/lib/storage/session';
 
 const rootReducer = combineReducers({
   [fipeApi.reducerPath]: fipeApi.reducer,
@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
 
 const persistConfig = {
   key: 'root',
-  storage,
+  storage: sessionStorage,
   whitelist: ['vehicleSearch'],
   blacklist: [fipeApi.reducerPath],
 };
