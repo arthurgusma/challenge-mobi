@@ -66,10 +66,10 @@ Este projeto inclui testes com Cypress para os principais fluxos do usuário.
 
 ```bash
 # Abrir o Cypress Test Runner
-npm run cypress:open
+npx cypress open
 
 # Executar testes em modo headless
-npm run cypress:run
+npx cypress run
 ```
 
 ### Cobertura de Testes
