@@ -46,11 +46,11 @@ export default function Form() {
 
     return (
         <Container 
-            maxWidth="sm" 
             style={{ 
                 backgroundColor: "#fff", 
                 paddingTop: "20px",
                 paddingBottom: "40px",
+                width: "500px"
             }}
         >
             <StyledFormControl fullWidth margin="normal" variant="filled">
@@ -130,7 +130,7 @@ export default function Form() {
                     variant="contained"
                     disabled={!vehicleSearch.year}
                     onClick={() => navigate('/resultado')}
-                    sx={{ mt: 2 }}
+                    sx={{ mt: 2, textTransform: 'none' }}
                 >
                     Consultar preço
                 </StyledButton>
