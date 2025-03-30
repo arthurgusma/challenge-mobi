@@ -5,10 +5,8 @@ export function NotFound() {
     return (
         <Container>
             <h1>Página não encontrada</h1>
-            <p>
-                Voltar para a{` `}
-                <NavigateHome />
-            </p>
+            <h3>Voltar ara a{` `}</h3>
+            <NavigateHome />
         </Container>
     )
 }
