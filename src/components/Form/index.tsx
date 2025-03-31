@@ -46,11 +46,11 @@ export default function Form() {
 
     return (
         <Container 
+            maxWidth="xs"
             style={{ 
                 backgroundColor: "#fff", 
                 paddingTop: "20px",
                 paddingBottom: "40px",
-                width: "500px"
             }}
         >
             <StyledFormControl fullWidth margin="normal" variant="filled">
